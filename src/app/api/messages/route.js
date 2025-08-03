@@ -28,7 +28,6 @@ export async function GET() {
 export async function POST(request) {
   try {
     const body = await request.json()
-
     // 数据验证
     const validation = validateMessage(body)
     if (!validation.isValid) {
@@ -41,10 +40,8 @@ export async function POST(request) {
         { status: 400 },
       )
     }
-
     const client = await clientPromise
     const db = client.db("forumdb")
-
     const newMessage = {
       title: sanitizeContent(body.title.trim()),
       content: sanitizeContent(body.content.trim()),
@@ -58,7 +55,6 @@ export async function POST(request) {
     }
 
     const result = await db.collection("messages").insertOne(newMessage)
-
     return NextResponse.json({
       success: true,
       data: { messageId: result.insertedId },

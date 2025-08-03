@@ -1,12 +1,14 @@
 {
-  "name": "my-v0-project",
+  "name": "forum-board",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "vercel-build": "next build",
+    "postinstall": "next telemetry disable"
   },
   "dependencies": {
     "@aws-sdk/credential-providers": "latest",

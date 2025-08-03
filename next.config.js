@@ -2,8 +2,7 @@
 const nextConfig = {
   // 启用实验性功能
   experimental: {
-    // 启用 App Router
-    appDir: true,
+    // App Router 在 Next.js 13+ 中默认启用
   },
   
   // 指定源码目录
@@ -11,9 +10,9 @@ const nextConfig = {
 
   // 图片优化配置
   images: {
-    domains: ["localhost"],
+    domains: ["localhost", "vercel.app", "vercel.com"],
     formats: ["image/webp", "image/avif"],
-    unoptimized: true,
+    unoptimized: false,
   },
 
   // 环境变量配置
@@ -36,6 +35,9 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+
+  // 输出配置 - 确保与Vercel兼容
+  output: 'standalone',
 
   // 重定向配置
   async redirects() {
